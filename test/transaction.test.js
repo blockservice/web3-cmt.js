@@ -11,7 +11,7 @@ const transfer = (f, t, v, gasPrice) => {
     value: web3.toWei(v, "gwei"),
     gasPrice: web3.toWei(gasPrice || 0, "gwei")
   }
-  let hash = web3.eth.sendTransaction(payload)
+  let hash = web3.cmt.sendTransaction(payload)
   console.log("transfer hash: ", hash)
   // check hash
   expect(hash).to.not.empty
@@ -22,7 +22,7 @@ const getBalance = () => {
   let balance = new Array(4)
   for (i = 0; i < 4; i++) {
     balance[i] = web3
-      .fromWei(web3.eth.getBalance(Wallet[i].Addr, "latest"), "gwei")
+      .fromWei(web3.cmt.getBalance(Wallet[i].Addr, "latest"), "gwei")
       .toNumber()
   }
   console.log("balance in gwei: -->")
