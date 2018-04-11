@@ -1,13 +1,5 @@
-const formatters = require("web3/lib/web3/formatters")
-const utils = require("web3/lib/utils/utils")
-
-inputStakeTxFormatter = function(options) {
-  if (options.from) {
-    options.from = formatters.inputAddressFormatter(options.from)
-  }
-
-  return options
-}
+var formatters = require("web3/lib/web3/formatters")
+var utils = require("web3/lib/utils/utils")
 
 inputDefaultHeightFormatter = function(height) {
   if (height === undefined) {
@@ -16,8 +8,6 @@ inputDefaultHeightFormatter = function(height) {
   return height
 }
 
-module.exports = {
-  formatters,
-  inputStakeTxFormatter,
-  inputDefaultHeightFormatter
-}
+formatters.inputDefaultHeightFormatter = inputDefaultHeightFormatter
+
+module.exports = formatters
